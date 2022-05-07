@@ -1,14 +1,23 @@
 version: "3.9"  # optional since v1.27.0
 
 services:
+  app:
+    build:
+      context: ./django/
+    volumes:
+      - ./django/:/usr/src/app/
+      - static_files:/usr/src/app/static
+    env_file:
+      - ./.env/dev.env
   nginx:
     build:
       context: ./nginx/
     ports:
       - 80:80
     volumes:
-      - ./nginx/html/:/usr/share/nginx/html/
+      # - ./nginx/html/:/usr/share/nginx/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - static_files:/home/app/static
 
   dns:
     build:
@@ -21,3 +30,6 @@ services:
       - ./dns/named.conf:/etc/bind/named.conf
       - ./dns/zone/:/etc/bind/zone/
     command: named -c /etc/bind/named.conf -g -u named
+
+volumes:
+  static_files:
