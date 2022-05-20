@@ -22,5 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("p1/", p1),
     path("p2/", p2),
-    path("split-test/", p1)
+    path("split-test/", p2),
 ]
