@@ -18,6 +18,7 @@ services:
       # - ./nginx/html/:/usr/share/nginx/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/static
+      - ./nginx/html/:/home/html/
 
   dns:
     build:
