@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic.base import TemplateView
 
 from demo.app.views import p1, p2
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("p1/", p1),
     path("p2/", p2),
-    path("split-test/", p1)
+    path("split-test/", p1),
+    path("rate-limit-test/", TemplateView.as_view(template_name="test.html")),
 ]
