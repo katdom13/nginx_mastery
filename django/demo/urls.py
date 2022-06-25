@@ -25,4 +25,8 @@ urlpatterns = [
     path("p2/", p2),
     path("split-test/", p1),
     path("rate-limit-test/", TemplateView.as_view(template_name="test.html")),
+    path(
+        "basic-auth-test/",
+        TemplateView.as_view(template_name="protected.html"),
+    ),
 ]

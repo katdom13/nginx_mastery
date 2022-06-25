@@ -10,14 +10,14 @@ services:
     env_file:
       - ./.env/dev.env
 
-  app2:
-    build:
-      context: ./django2/
-    volumes:
-      - ./django2/:/usr/src/app/
-      - static_files:/usr/src/app/static
-    env_file:
-      - ./.env/dev.env
+  # app2:
+  #   build:
+  #     context: ./django2/
+  #   volumes:
+  #     - ./django2/:/usr/src/app/
+  #     - static_files:/usr/src/app/static
+  #   env_file:
+  #     - ./.env/dev.env
 
   nginx:
     build:
@@ -29,6 +29,7 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/static
       - ./nginx/html/:/home/html/
+      - ./nginx/.htpasswd:/etc/pwd/.htpasswd
 
   dns:
     build:
