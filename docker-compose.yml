@@ -25,10 +25,10 @@ services:
     ports:
       - 80:80
     volumes:
-      # - ./nginx/html/:/usr/share/nginx/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/static
       - ./nginx/html/:/home/html/
+      - ./nginx/secure/:/home/secure/
       - ./nginx/.htpasswd:/etc/pwd/.htpasswd
 
   dns:

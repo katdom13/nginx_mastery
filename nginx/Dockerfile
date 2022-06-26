@@ -1,6 +1,7 @@
 FROM nginx:latest
 
 COPY ./html /usr/share/nginx/html
+COPY ./secure /home/secure
 COPY .htpasswd /etc/pwd/.htpasswd
 
 RUN apt-get update && apt-get install -y procps
